@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-//import Link from "./link"
-import { Link, navigate } from "gatsby"
+import Link from "./link"
 import Player from "./player"
 
 import Header from "./header"
@@ -32,6 +31,8 @@ function Layout({ children }) {
     }
   `)
 
+  const currentEpisode = data.allEpisode.nodes[0]
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
@@ -45,8 +46,10 @@ function Layout({ children }) {
         }}
       >
         {/* 
-          to-do: Global state-populated player 
-          <Player episode={data.allEpisode.nodes[0]} /> */}
+          to-do: Global state-populated player */}
+        <Player episode={currentEpisode} />
+
+        {/* <button onClick={() => setCount(count + 1)}>Click me {count}</button> */}
 
         {/* <iframe
           title="player"
@@ -71,7 +74,11 @@ function Layout({ children }) {
           <ul>
             {data.allEpisode.nodes.map(episode => (
               <li key={episode.id}>
-                <Link to={`show/${episode.number}/${episode.fields.slug}`}>
+                <Link
+                  to={
+                    "/show" + "/" + episode.number + "/" + episode.fields.slug
+                  }
+                >
                   {episode.title}
                 </Link>
               </li>

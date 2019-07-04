@@ -8,7 +8,8 @@ import Player from "../components/player"
 function IndexPage({ data: { episode, markdownRemark } }) {
   return (
     <Layout>
-      <Player episode={episode} />
+      {/* <Player episode={episode} /> */}
+      <button>play episode {episode.number}</button>
       <SEO title="Home" />
       <h1>{episode.title}</h1>
       <p>{episode.description && episode.description}</p>
@@ -28,6 +29,7 @@ export const indexQuery = graphql`
     episode {
       id
       title
+      number
       description
       fields {
         slug
