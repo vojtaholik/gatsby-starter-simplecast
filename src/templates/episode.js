@@ -1,20 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 
 function EpisodeTemplate({ data: { episode, markdownRemark } }) {
   return (
     <>
-      <Layout data={episode}>
-        <button>play episode {episode.number}</button>
-        <h1>{episode.title}</h1>
-        <p>{episode.description && episode.description}</p>
-        {markdownRemark && (
-          <div>
-            <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-          </div>
-        )}
-      </Layout>
+      <h1>{episode.title}</h1>
+      <button>play episode {episode.number}</button>
+      <p>{episode.description && episode.description}</p>
+      {markdownRemark && (
+        <div>
+          <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+        </div>
+      )}
     </>
   )
 }

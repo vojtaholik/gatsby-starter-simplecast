@@ -1,24 +1,43 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
+import { useStaticQuery, graphql } from "gatsby"
+import Player from "./player"
 
-const Header = ({ siteTitle, children }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    {children}
-  </header>
-)
+function Header({ children }) {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+      allEpisode {
+        totalCount
+        nodes {
+          id
+          title
+          description
+          number
+          enclosure_url
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `)
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+  const currentEpisode = data.allEpisode.nodes[0]
+
+  return (
+    <div style={{ marginBottom: "2rem" }}>
+      <Player episode={currentEpisode} />
+    </div>
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
+Header.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Header

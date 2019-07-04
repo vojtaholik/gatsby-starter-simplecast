@@ -2,9 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "./link"
-import Player from "./player"
 
-import Header from "./header"
 import "./layout.css"
 
 function Layout({ children }) {
@@ -31,11 +29,8 @@ function Layout({ children }) {
     }
   `)
 
-  const currentEpisode = data.allEpisode.nodes[0]
-
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
@@ -45,12 +40,6 @@ function Layout({ children }) {
           display: "flex",
         }}
       >
-        {/* 
-          to-do: Global state-populated player */}
-        <Player episode={currentEpisode} />
-
-        {/* <button onClick={() => setCount(count + 1)}>Click me {count}</button> */}
-
         {/* <iframe
           title="player"
           height="200px"
