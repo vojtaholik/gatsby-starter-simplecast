@@ -28,7 +28,6 @@ export function EpisodeProvider(props) {
     <EpisodeContext.Provider
       value={{
         state: current,
-        //setCurrent: () => setCurrent("tribla"),
         setCurrent,
       }}
       {...props}
