@@ -32,6 +32,7 @@ export function EpisodeProvider(props) {
       value={{
         state: currentPlaying,
         setCurrentPlaying,
+        changed: setCurrentPlaying,
       }}
       {...props}
     />

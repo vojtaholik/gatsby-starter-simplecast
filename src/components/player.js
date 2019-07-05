@@ -147,7 +147,7 @@ export default class Player extends React.Component {
   playPause = () => {
     this.setState({ playing: !this.audio.paused })
     const method = this.audio.paused ? "add" : "remove"
-    //document.querySelector(".bars").classList[method]("bars--paused") // 💩
+    document.querySelector(".bars").classList[method]("bars--paused") // 💩
   }
 
   volume = e => {
