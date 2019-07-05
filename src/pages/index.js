@@ -9,7 +9,6 @@ function IndexPage({ data: { episode, allEpisode, markdownRemark } }) {
       <SEO title="Home" />
       <h1>{episode.title}</h1>
       <p>{episode.description && episode.description}</p>
-
       {markdownRemark && (
         <div>
           <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />

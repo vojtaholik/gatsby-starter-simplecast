@@ -1,11 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { EpisodeConsumer } from "../components/context"
 
 function EpisodeTemplate({ data: { episode, markdownRemark } }) {
   return (
     <>
       <h1>{episode.title}</h1>
-      <button>play episode {episode.number}</button>
+      <EpisodeConsumer>
+        {context => (
+          <>
+            <button onClick={() => context.setCurrent(episode)}>
+              play episode {episode.number}
+            </button>
+          </>
+        )}
+      </EpisodeConsumer>
       <p>{episode.description && episode.description}</p>
       {markdownRemark && (
         <div>
