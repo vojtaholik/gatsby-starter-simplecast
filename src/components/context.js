@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 const EpisodeContext = React.createContext()
-
 export function EpisodeProvider(props) {
   const data = useStaticQuery(graphql`
     {
@@ -23,8 +22,7 @@ export function EpisodeProvider(props) {
   `)
 
   const [currentPlaying, setCurrentPlaying] = React.useState(
-    data.allEpisode.nodes[0],
-    []
+    data.allEpisode.nodes[0]
   )
 
   return (
@@ -32,7 +30,6 @@ export function EpisodeProvider(props) {
       value={{
         state: currentPlaying,
         setCurrentPlaying,
-        changed: setCurrentPlaying,
       }}
       {...props}
     />

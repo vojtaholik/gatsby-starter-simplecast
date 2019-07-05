@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Link from "./link"
-import { EpisodeConsumer } from "../components/context"
+import { EpisodeConsumer } from "./context"
 import Bars from "./bars"
 
 function List() {
@@ -22,6 +22,7 @@ function List() {
       }
     }
   `)
+
   return (
     <aside>
       <ul>
@@ -35,7 +36,7 @@ function List() {
             <EpisodeConsumer>
               {context => (
                 <>
-                  {context.state.id === episode.id ? (
+                  {episode.id === context.state.id ? (
                     <Bars />
                   ) : (
                     <button onClick={() => context.setCurrentPlaying(episode)}>
