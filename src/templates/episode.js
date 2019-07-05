@@ -9,7 +9,7 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
       <EpisodeConsumer>
         {context => (
           <>
-            <button onClick={() => context.setCurrent(episode)}>
+            <button onClick={() => context.setCurrentPlaying(episode)}>
               play episode {episode.number}
             </button>
           </>

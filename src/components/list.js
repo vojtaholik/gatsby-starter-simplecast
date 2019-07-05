@@ -1,6 +1,7 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Link from "./link"
+import { EpisodeConsumer } from "../components/context"
 
 function List() {
   const data = useStaticQuery(graphql`
@@ -30,6 +31,14 @@ function List() {
             >
               {episode.title}
             </Link>
+            <EpisodeConsumer>
+              {context => (
+                <>
+                  {context.state.id === episode.id && "- in player"}
+                  {/* to-do: display information about whether player is playing */}
+                </>
+              )}
+            </EpisodeConsumer>
           </li>
         ))}
       </ul>

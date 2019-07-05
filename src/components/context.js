@@ -22,13 +22,16 @@ export function EpisodeProvider(props) {
     }
   `)
 
-  const [current, setCurrent] = React.useState(data.allEpisode.nodes[0])
+  const [currentPlaying, setCurrentPlaying] = React.useState(
+    data.allEpisode.nodes[0],
+    []
+  )
 
   return (
     <EpisodeContext.Provider
       value={{
-        state: current,
-        setCurrent,
+        state: currentPlaying,
+        setCurrentPlaying,
       }}
       {...props}
     />
