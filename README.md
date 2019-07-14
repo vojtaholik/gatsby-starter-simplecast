@@ -1,2 +1,3 @@
-- `yarn`
-- `gatsby develop`
+### WIP
+
+`yarn && gatsby develop`
