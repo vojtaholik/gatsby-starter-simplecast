@@ -1,8 +1,15 @@
 ---
-title: Get out of Your Head and Start with Your Users - with Janelle Allen
-slug: get-out-of-your-head-and-start-with-your-users-with-janelle-allen
-id: 815fd97a-c688-43a0-89ec-adb51771d245
+title: Podcast episode 3
+slug: podcast-episode-3
+summary: 'Summary. Lorem ipsum dolor sit amet.'
+id: 3abc
 number: 45
+resources: ['[Badass: Making Users Awesome](https://www.goodreads.com/book/show/24737268-badass)',
+'[Shambhala: The Sacred Path of the Warrior](https://www.goodreads.com/book/show/336248.Shambhala)']
+guestName: 'Janelle Allen'
+guestSummary: '[Twitter](https://twitter.com/janelleallen?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)'
+image: './banner-7.png'
+guestPhoto: null
 ---
 
 Teaching provides a learner with more information, but the information isn't the only thing that is required to teach effectively. Doing is almost just as essential as the information itself for the learner to solidify what was taught. Creating an effective learning path is challenging, and we tend to start from what we know and take it from there. Janelle challenges the tendency to start from our knowledge, and instead, we should start from where we want our learners to end up being and work backward from there, this is called *Backward Design*. 
@@ -13,11 +20,6 @@ How do you start teaching if you have no one to teach? Janelle says there are th
 
 ---
 
-**Resources**
-
-- [Badass: Making Users Awesome](https://www.goodreads.com/book/show/24737268-badass)
-
-- [Shambhala: The Sacred Path of the Warrior](https://www.goodreads.com/book/show/336248.Shambhala)
 
 **Janelle Allen:**
 

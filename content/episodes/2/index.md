@@ -1,8 +1,13 @@
 ---
-title: Figuring Out What's Next after Your Needs are Met - with Jason Lengstorf
-slug: figuring-out-what-s-next-after-your-needs-are-met-with-jason-lengstorf
-id: 7979994f-c577-4728-aa5e-4f2c1e9314ae
+title: Podcast episode 2
+slug: podcast-episode-2
+summary: 'Summary. Lorem ipsum dolor sit amet.'
+id: 2abc
 number: 46
+image: './banner-3.png'
+guestName: 'Anna Wragnel'
+guestSummary: 'Lorem ipsum dolor sit amet. [Twitter](/)'
+guestPhoto: './guest.png'
 ---
 
 What do we do when all of our needs are met when we are making seventy-five thousand plus a year, working for a company with some prestige, have a home, and don't have to worry about food. Jason Lengstorf wrestled with this after the company he was contracting with didn't have anything for him to do, but kept him around. New goals have to be set, and growth still has to happen. 

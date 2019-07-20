@@ -1,6 +1,9 @@
+/** @jsx jsx */
 import React from "react"
 import PropTypes from "prop-types"
 import { FaPlay, FaPause } from "react-icons/fa"
+import { jsx, Container } from "theme-ui"
+import { keyframes, css } from "@emotion/core"
 import formatTime from "../lib/formatTime"
 import VolumeBars from "./volumeBars"
 
@@ -196,56 +199,165 @@ export default class Player extends React.Component {
       tooltipTime,
     } = this.state
 
+    const bounce = keyframes`
+    from {
+      transform: translateX(0)
+    }
+  to {
+    transform: translateX(-200px)
+  }
+  `
+
     return (
-      <div className="player" style={{ display: "flex", width: "100%" }}>
-        <div className="player__section player__section--left">
-          <button
-            onClick={this.togglePlay}
-            aria-label={playing ? "pause" : "play"}
-            type="button"
-          >
-            <p className="player__icon">{playing ? <FaPause /> : <FaPlay />}</p>
-            <p>
-              {formatTime(currentTime)} / {formatTime(duration)}
-            </p>
-          </button>
-        </div>
-
-        <div className="player__section player__section--middle">
+      <div
+        sx={{
+          position: "fixed",
+          width: "100%",
+          color: "text",
+          borderTop: "2px solid",
+          borderColor: "background-lighten-10",
+          backgroundColor: "background",
+          //height: 60,
+          bottom: 0,
+          left: 0,
+          display: "flex",
+          alignItems: "center",
+        }}
+        className="player"
+      >
+        <Container sx={{ display: "flex", alignItems: "center" }}>
           <div
-            className="progress"
-            onClick={this.scrub}
-            onMouseMove={this.seekTime}
-            onMouseEnter={() => {
-              this.setState({ showTooltip: true })
+            sx={{
+              width: "100%",
+              maxWidth: 310,
+              display: "flex",
+              alignItems: "center",
+              "*": {
+                m: 0,
+              },
             }}
-            onMouseLeave={() => {
-              this.setState({ showTooltip: false })
-            }}
-            ref={x => (this.progress = x)}
           >
-            {/* eslint-enable */}
-
+            <button
+              tabIndex="1"
+              sx={{
+                backgroundImage:
+                  "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
+                color: "text",
+                border: "none",
+                width: "100%",
+                maxWidth: 40,
+                height: 40,
+                borderRadius: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 1,
+                cursor: "pointer",
+                svg: {
+                  mt: 1,
+                  ml: playing ? 0 : 2,
+                },
+              }}
+              onClick={this.togglePlay}
+              aria-label={playing ? "pause" : `play ${episode.title}`}
+              type="button"
+            >
+              {playing ? <FaPause /> : <FaPlay />}
+            </button>
             <div
-              className="progress__time"
-              style={{ width: `${progressTime}%` }}
-            />
+              sx={{
+                ml: 16,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                width: "100%",
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                height: 60,
+                ".fade-out": {
+                  position: "absolute",
+                  zIndex: 999,
+                  width: 40,
+                  height: 60,
+                  backgroundImage:
+                    "linear-gradient(270deg, #1A2232 20%, rgba(26,34,50,0) 100%)",
+                },
+                h3: {
+                  overflow: "hidden",
+                  position: "relative",
+                  fontSize: 4,
+                  display: "block",
+                },
+                ":hover": {
+                  h3: { animation: `${bounce} 5s linear infinite` },
+                },
+              }}
+            >
+              <h3 css={css({})}>
+                {episode.title} - EP{episode.number}
+              </h3>
+              <div className="fade-out" />
+            </div>
           </div>
-          <h3 className="player__title">
-            Playing: {episode.displayNumber}: {episode.title}
-          </h3>
+
           <div
-            className="player__tooltip"
-            style={{
-              left: `${tooltipPosition}px`,
-              opacity: `${showTooltip ? "1" : "0"}`,
+            sx={{
+              ml: 35,
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              span: {
+                fontVariantNumeric: "tabular-nums",
+                width: 50,
+                fontSize: 1,
+                textAlign: "center",
+                opacity: 0.6,
+              },
             }}
           >
-            {tooltipTime}
+            <span>{formatTime(currentTime)}</span>
+            <div
+              sx={{
+                mx: 10,
+                height: 2,
+                flexGrow: "1",
+                maxWidth: 450,
+                backgroundColor: "background-lighten-20",
+              }}
+              className="progress"
+              onClick={this.scrub}
+              onMouseMove={this.seekTime}
+              onMouseEnter={() => {
+                this.setState({ showTooltip: true })
+              }}
+              onMouseLeave={() => {
+                this.setState({ showTooltip: false })
+              }}
+              ref={x => (this.progress = x)}
+            >
+              {/* eslint-enable */}
+              <div
+                className="progress__time"
+                sx={{
+                  width: `${progressTime}%`,
+                  backgroundImage:
+                    "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
+                }}
+              />
+            </div>
+            <span>{formatTime(duration)}</span>
+            <div
+              style={{
+                position: "absolute",
+                left: `${tooltipPosition}px`,
+                opacity: `${showTooltip ? "1" : "0"}`,
+              }}
+            >
+              {tooltipTime}
+            </div>
           </div>
-        </div>
 
-        <div className="player__section player__section--right">
+          {/* <div className="player__section player__section--right">
           <button
             onClick={this.speedUp}
             onContextMenu={this.speedDown}
@@ -255,8 +367,8 @@ export default class Player extends React.Component {
             <p>FASTNESS</p>
             <span className="player__speeddisplay">{playbackRate} &times;</span>
           </button>
-        </div>
-        <div
+        </div> */}
+          {/* <div
           className="player__volume"
           style={{ display: "flex", width: "100%" }}
         >
@@ -264,16 +376,17 @@ export default class Player extends React.Component {
           <div className="player__inputs">
             <VolumeBars volume={this.volume} />
           </div>
-        </div>
-        <audio
-          ref={audio => (this.audio = audio)}
-          onPlay={this.playPause}
-          onPause={this.playPause}
-          onTimeUpdate={this.timeUpdate}
-          onVolumeChange={this.volumeUpdate}
-          onLoadedMetadata={this.groupUpdates}
-          src={episode.enclosure_url}
-        />
+        </div> */}
+          <audio
+            ref={audio => (this.audio = audio)}
+            onPlay={this.playPause}
+            onPause={this.playPause}
+            onTimeUpdate={this.timeUpdate}
+            onVolumeChange={this.volumeUpdate}
+            onLoadedMetadata={this.groupUpdates}
+            src={episode.enclosure_url}
+          />
+        </Container>
       </div>
     )
   }

@@ -1,8 +1,14 @@
 ---
-title: Building Vue Vixens With Education and Inclusiveness – With Jen Looper
-slug: building-vue-vixens-with-education-and-inclusiveness-with-jen-looper
-id: 831dd452-0017-431f-a6aa-e67f656bcbb5
+title: Podcast episode 1
+slug: podcast-episode-1
+summary: 'Summary. Lorem ipsum dolor sit amet.'
+id: 1abc
 number: 44
+resources: ['[Link](/)','[Link](/)','[Link](/)']
+guestName: 'Guest Name'
+guestSummary: '[Twitter](/)'
+image: null
+guestPhoto: null
 ---
 
 Jen Looper, developer advocate and the founder of Vue Vixens, didn't study software development in college, she has a Ph.D. in French Literature. Her degree might seem unrelated, but it strengthened her ability to explain complex ideas as well as her overall communication abilities, skills that are essential for her role as a developer advocate. These skills also come into play in her work building the Vue Vixens community, which now has over 20+ chapters all over the world!

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 const EpisodeContext = React.createContext()
+
 export function EpisodeProvider(props) {
   const data = useStaticQuery(graphql`
     {

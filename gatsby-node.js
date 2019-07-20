@@ -5,6 +5,7 @@ const axios = require("axios")
 const crypto = require("crypto")
 const path = require("path")
 const slugify = require("@sindresorhus/slugify")
+const data = require("./src/data/data.json")
 
 axios.defaults.headers.common.Authorization = `Bearer ${process.env.SIMPLECAST_API_SECRET}`
 axios.defaults.headers.common.Accept = "application/json"
@@ -13,9 +14,10 @@ exports.sourceNodes = async ({
   actions: { createNode, createNodeField },
   plugins,
 }) => {
-  const { data } = await axios(
-    `https://api.simplecast.com/podcasts/${process.env.PODCAST_ID}/episodes?limit=20`
-  )
+  // Get data from egghead simplecast api
+  //   const { data } = await axios(
+  //     `https://api.simplecast.com/podcasts/${process.env.PODCAST_ID}/episodes?limit=20`
+  //   )
 
   const packagePodcast = p => {
     const nodeContent = JSON.stringify(p)

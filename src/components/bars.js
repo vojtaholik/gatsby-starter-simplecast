@@ -9,6 +9,14 @@ const Bars = () => (
     <div className="bar" />
     <div className="bar" />
     <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
+    <div className="bar" />
   </div>
 )
 
