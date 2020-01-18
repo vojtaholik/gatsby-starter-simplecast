@@ -21,7 +21,7 @@ function Header({ context, episode, image, ref }) {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: 400,
+        height: "auto",
         backgroundImage: image
           ? "none"
           : "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
@@ -34,11 +34,7 @@ function Header({ context, episode, image, ref }) {
       {image && <Img fluid={image.childImageSharp.fluid} />}
       <div
         sx={{
-          position: "absolute",
-          //m: 40,
-          pb: 40,
-          pl: 40,
-          zIndex: 999,
+          p: "15px",
           display: "flex",
           alignItems: "flex-start",
         }}
@@ -46,13 +42,12 @@ function Header({ context, episode, image, ref }) {
         <button
           ref={playbtn}
           sx={{
-            width: 30,
-            height: 30,
+            width: 55,
+            height: 55,
             background: "transparent",
             border: "1px solid",
             borderColor: "text",
             color: "text",
-            fontSize: "10px",
             borderRadius: 1,
             display: "flex",
             alignItems: "center",
@@ -69,7 +64,7 @@ function Header({ context, episode, image, ref }) {
         >
           <PlayIcon />
         </button>
-        <div>
+        <div sx={{ display: "flex", flexDirection: "column", flex: "1 1 0" }}>
           <h1>{episode.title}</h1>
           <h5>EP{episode.number}</h5>
         </div>

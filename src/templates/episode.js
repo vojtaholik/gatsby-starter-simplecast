@@ -28,13 +28,14 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
     <EpisodeConsumer>
       {context => (
         <>
-          <div sx={{ display: "flex" }}>
+          <div sx={{ display: "flex", flexDirection: ['column', 'column', 'row'] }}>
             <div sx={{ maxWidth: 710 }}>
               <Header context={context} episode={episode} image={image} />
               <article
                 sx={{
                   p: 40,
-                  pb: 100,
+                  pb: [0, 0, 100],
+                  mb: [30, 30, 0],
                   borderLeft: "2px solid",
                   borderRight: "2px solid",
                   borderColor: "background-lighten-10",
@@ -50,7 +51,8 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
               sx={{
                 p: 40,
                 width: "100%",
-                maxWidth: 250,
+                maxWidth: ["100%", "100%", 250],
+                mb: [30, 30, 0],
                 fontSize: "15px",
                 h5: { mt: 15, mb: 10, fontSize: 3 },
                 "h5:not(:first-of-type)": { mb: 10, mt: 0 },
