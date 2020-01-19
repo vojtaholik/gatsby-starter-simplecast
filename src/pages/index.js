@@ -1,24 +1,25 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React, { useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
-import { EpisodeConsumer } from "../components/context"
-import { FaPlay as PlayIcon } from "react-icons/fa"
-import Markdown from "react-markdown"
 
 import Episode from "../templates/episode"
+import SEO from "../components/seo"
 
 function IndexPage({ data: { allEpisode, allMarkdownRemark } }) {
   const MarkdownForLatestEpisode = allMarkdownRemark.edges.filter(
     Markdown => Markdown.node.frontmatter.id === allEpisode.nodes[0].id
   )
   return (
+    <>
     <Episode
       data={{
         episode: allEpisode.nodes[0],
         markdownRemark: MarkdownForLatestEpisode[0].node,
       }}
     />
+    <SEO title={"Türkçe Web Teknoloji Podcasti"} />
+    </>
   )
 }
 export default IndexPage

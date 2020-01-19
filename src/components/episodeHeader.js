@@ -24,7 +24,7 @@ function Header({ context, episode, image, ref }) {
         height: "auto",
         backgroundImage: image
           ? "none"
-          : "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
+          : "linear-gradient(224deg, #6dbaed 0%, #4871c3 100%)",
         justifyContent: "flex-end",
         color: "text",
         "h1, h5": { m: 0 },

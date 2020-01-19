@@ -6,6 +6,7 @@ import Link from "./link"
 import { EpisodeConsumer } from "./context"
 import Bars from "./bars"
 import { FaPlay as PlayIcon } from "react-icons/fa"
+import tcbLogo from "../images/the-coding-bros-logo.svg"
 
 function List() {
   const data = useStaticQuery(graphql`
@@ -41,19 +42,10 @@ function List() {
       {context => (
         <>
         <section sx={{ display: 'flex', flexDirection: ['column'] }}>
-          <div sx={{ m: ['15px 0 15px 15px'] }}>
-            <h1 sx={{ fontSize: 6, color: "primary", mb: 0 }}>Podcast Name</h1>
-            <h5
-              sx={{
-                textTransform: "uppercase",
-                m: "10px 0",
-                fontWeight: 400,
-                fontSize: 1,
-                opacity: 0.6,
-              }}
-            >
-              season 01
-            </h5>
+          <div sx={{ m: ['15px 0 15px'], display: 'flex', minHeight: 125, justifyContent: 'center' }}>
+            <a href="/" title={'Ana Sayfa'}>
+              <img sx={{ maxHeight: 125, mb: 0 }} src={tcbLogo} alt={'The Coding Bros Logo'} />
+            </a>
           </div>
 
           <nav sx={{ maxWidth: ['100%', '100%', '300px'], ml: [0] }}>
@@ -127,7 +119,7 @@ function List() {
                     role="menuitem"
                     activeClassName="active"
                     to={
-                      "/show" + "/" + episode.number + "/" + episode.fields.slug
+                      "/bolum" + "/" + episode.number + "/" + episode.fields.slug
                     }
                   >
                     <h4>{episode.title}</h4>
@@ -135,6 +127,7 @@ function List() {
                       if (markdown.frontmatter.id === episode.id)
                         return (
                           <p
+                            key={markdown.frontmatter.id}
                             sx={{
                               fontSize: 2,
                               lineHeight: 1.4,

@@ -5,15 +5,14 @@ import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import { EpisodeConsumer } from "../components/context"
 import {
-  FaPlay as PlayIcon,
   FaExternalLinkAlt as ExternalLinkIcon,
 } from "react-icons/fa"
 import Link from "../components/link"
 import Markdown from "react-markdown"
-import spotifyIcon from "../images/spotify.svg"
 import itunesIcon from "../images/apple.svg"
 import spotifyImage from "../images/Spotify_Logo_RGB_Green.png"
 import Header from "../components/episodeHeader"
+import SEO from "../components/seo"
 
 function EpisodeTemplate({ data: { episode, markdownRemark } }) {
   const image = markdownRemark && markdownRemark.frontmatter.image
@@ -28,6 +27,7 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
     <EpisodeConsumer>
       {context => (
         <>
+          <SEO title={episode.title} description={episode.description} />
           <div sx={{ display: "flex", flexDirection: ['column', 'column', 'row'] }}>
             <div sx={{ maxWidth: 710 }}>
               <Header context={context} episode={episode} image={image} />
@@ -125,8 +125,9 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
                 <>
                   <h5>Resources</h5>
                   <ul>
-                    {markdownRemark.frontmatter.resources.map(resource => (
+                    {markdownRemark.frontmatter.resources.map((resource, index) => (
                       <li
+                        key={index}
                         sx={{
                           display: "flex",
                           a: { color: "text" },
