@@ -43,9 +43,9 @@ function List() {
         <>
         <section sx={{ display: 'flex', flexDirection: ['column'] }}>
           <div sx={{ m: ['15px 0 15px'], display: 'flex', minHeight: 125, justifyContent: 'center' }}>
-            <a href="/" title={'Ana Sayfa'}>
+            <Link to="/" title={'Ana Sayfa'}>
               <img sx={{ maxHeight: 125, mb: 0 }} src={tcbLogo} alt={'The Coding Bros Logo'} />
-            </a>
+            </Link>
           </div>
 
           <nav sx={{ maxWidth: ['100%', '100%', '300px'], ml: [0] }}>
