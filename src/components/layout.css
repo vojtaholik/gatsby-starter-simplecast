@@ -7,6 +7,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #1A2232;
 }
 
 .progress {
@@ -15,6 +16,7 @@ body {
   cursor: crosshair;
   overflow: hidden;
 }
+
 .progress__time {
   background: green;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -650,7 +652,7 @@ pre tt:after {
 }
 
 .bar {
-  background: #a085ff;
+  background: #6bb8ec;
   bottom: 1px;
   height: 3px;
   position: absolute;
@@ -665,12 +667,12 @@ pre tt:after {
 @keyframes sound {
   0% {
     opacity: 0.35;
-    background: #a085ff;
+    background: #6bb8ec;
     width: 3px;
   }
   100% {
     opacity: 1;
-    background: #a085ff;
+    background: #6bb8ec;
     width: 10px;
   }
 }

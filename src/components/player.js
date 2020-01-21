@@ -5,7 +5,7 @@ import { FaPlay, FaPause } from "react-icons/fa"
 import { jsx, Container } from "theme-ui"
 import { keyframes, css } from "@emotion/core"
 import formatTime from "../lib/formatTime"
-import VolumeBars from "./volumeBars"
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 export default class Player extends React.Component {
   static propTypes = {
@@ -129,6 +129,10 @@ export default class Player extends React.Component {
   togglePlay = () => {
     const { playing } = this.state
     const method = playing ? "pause" : "play"
+    trackCustomEvent({
+      category: "player",
+      action: method,
+    })
     this.audio[method]()
   }
 
@@ -212,12 +216,12 @@ export default class Player extends React.Component {
       <div
         sx={{
           position: "fixed",
+          zIndex: 1,
           width: "100%",
           color: "text",
           borderTop: "2px solid",
           borderColor: "background-lighten-10",
           backgroundColor: "background",
-          //height: 60,
           bottom: 0,
           left: 0,
           display: "flex",
@@ -241,12 +245,13 @@ export default class Player extends React.Component {
               tabIndex="1"
               sx={{
                 backgroundImage:
-                  "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
+                  "linear-gradient(224deg, #6bb8ec 0%, #79bfed 100%)",
                 color: "text",
                 border: "none",
                 width: "100%",
                 maxWidth: 40,
                 height: 40,
+                ml: [10, 10, 0],
                 borderRadius: 1,
                 display: "flex",
                 alignItems: "center",
@@ -265,6 +270,7 @@ export default class Player extends React.Component {
               {playing ? <FaPause /> : <FaPlay />}
             </button>
             <div
+              title={episode.title}
               sx={{
                 ml: 16,
                 display: "flex",
@@ -302,7 +308,7 @@ export default class Player extends React.Component {
 
           <div
             sx={{
-              ml: 35,
+              ml: [10, 10, 35],
               width: "100%",
               display: "flex",
               alignItems: "center",
@@ -341,42 +347,12 @@ export default class Player extends React.Component {
                 sx={{
                   width: `${progressTime}%`,
                   backgroundImage:
-                    "linear-gradient(224deg, #B298FF 0%, #7A5EFF 100%)",
+                    "linear-gradient(224deg, #6bb8ec 0%, #b5dbf5 100%)",
                 }}
               />
             </div>
             <span>{formatTime(duration)}</span>
-            <div
-              style={{
-                position: "absolute",
-                left: `${tooltipPosition}px`,
-                opacity: `${showTooltip ? "1" : "0"}`,
-              }}
-            >
-              {tooltipTime}
-            </div>
           </div>
-
-          {/* <div className="player__section player__section--right">
-          <button
-            onClick={this.speedUp}
-            onContextMenu={this.speedDown}
-            className="player__speed"
-            type="button"
-          >
-            <p>FASTNESS</p>
-            <span className="player__speeddisplay">{playbackRate} &times;</span>
-          </button>
-        </div> */}
-          {/* <div
-          className="player__volume"
-          style={{ display: "flex", width: "100%" }}
-        >
-          <p>LOUDNESS</p>
-          <div className="player__inputs">
-            <VolumeBars volume={this.volume} />
-          </div>
-        </div> */}
           <audio
             ref={audio => (this.audio = audio)}
             onPlay={this.playPause}

@@ -68,7 +68,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   data.allEpisode.edges.forEach(({ node }) => {
     actions.createPage({
-      path: `show/${node.number}/${slugify(node.title)}`,
+      path: `bolum/${node.number}/${slugify(node.title)}`,
       component: path.resolve(`./src/templates/episode.js`),
       context: {
         slug: slugify(node.title),

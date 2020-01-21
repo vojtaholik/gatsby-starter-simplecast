@@ -5,15 +5,14 @@ import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import { EpisodeConsumer } from "../components/context"
 import {
-  FaPlay as PlayIcon,
   FaExternalLinkAlt as ExternalLinkIcon,
 } from "react-icons/fa"
 import Link from "../components/link"
 import Markdown from "react-markdown"
-import spotifyIcon from "../images/spotify.svg"
 import itunesIcon from "../images/apple.svg"
 import spotifyImage from "../images/Spotify_Logo_RGB_Green.png"
 import Header from "../components/episodeHeader"
+import SEO from "../components/seo"
 
 function EpisodeTemplate({ data: { episode, markdownRemark } }) {
   const image = markdownRemark && markdownRemark.frontmatter.image
@@ -28,13 +27,15 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
     <EpisodeConsumer>
       {context => (
         <>
-          <div sx={{ display: "flex" }}>
+          <SEO title={episode.title} description={episode.description} />
+          <div sx={{ display: "flex", flexDirection: ['column', 'column', 'row'] }}>
             <div sx={{ maxWidth: 710 }}>
               <Header context={context} episode={episode} image={image} />
               <article
                 sx={{
                   p: 40,
-                  pb: 100,
+                  pb: [0, 0, 100],
+                  mb: [30, 30, 0],
                   borderLeft: "2px solid",
                   borderRight: "2px solid",
                   borderColor: "background-lighten-10",
@@ -50,7 +51,8 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
               sx={{
                 p: 40,
                 width: "100%",
-                maxWidth: 250,
+                maxWidth: ["100%", "100%", 250],
+                mb: [30, 30, 0],
                 fontSize: "15px",
                 h5: { mt: 15, mb: 10, fontSize: 3 },
                 "h5:not(:first-of-type)": { mb: 10, mt: 0 },
@@ -123,8 +125,9 @@ function EpisodeTemplate({ data: { episode, markdownRemark } }) {
                 <>
                   <h5>Resources</h5>
                   <ul>
-                    {markdownRemark.frontmatter.resources.map(resource => (
+                    {markdownRemark.frontmatter.resources.map((resource, index) => (
                       <li
+                        key={index}
                         sx={{
                           display: "flex",
                           a: { color: "text" },
